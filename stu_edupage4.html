@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeachHub - Math AI</title>
+  <link rel="icon" type="image/png" href="logo1.png" />
+
+  <style>
+    /* ===== Dark Purple Math AI Page Styles ===== */
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: rgba(36, 0, 70, 0.9); /* Dark purple */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      color: #e0e0ff;
+    }
+
+    .math-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 360px;
+      color: #000;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      resize: none;
+      font-size: 15px;
+    }
+
+    button {
+      background-color: #5c33ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 22px;
+      cursor: pointer;
+      font-size: 15px;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #3d1dba;
+      transform: translateY(-2px);
+    }
+
+    .output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f0f8ff;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+      min-height: 40px;
+      text-align: left;
+      word-wrap: break-word;
+      color: #0052cc;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Physics Solver</h1>
+
+  <div class="math-box">
+    <textarea id="question" placeholder="Type your biology question here..."></textarea>
+    <button onclick="solveMath()">Solve</button>
+    <div class="output" id="result">Answer will appear here...</div>
+  </div>
+
+  <script>
+    async function solveMath() {
+      const input = document.getElementById("question").value.trim();
+      const output = document.getElementById("result");
+
+      if (!input) {
+        output.innerText = "Please enter a biology question.";
+        return;
+      }
+
+      output.innerText = "Thinking...";
+
+      try {
+        // Replace this with your AI backend endpoint
+        const res = await fetch('/api/solve', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question: input })
+        });
+
+        if (!res.ok) throw new Error('AI request failed');
+
+        const data = await res.json();
+        output.innerHTML = "<pre>" + data.answer + "</pre>";
+
+      } catch (error) {
+        output.innerText = "⚠️ Error.";
+      }
+    }
+  </script>
+</body>
+</html>

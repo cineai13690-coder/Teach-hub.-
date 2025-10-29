@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TeachHub - AI-Powered Learning</title>
+    <link rel="icon" type="image.png" href="logo1.png" />
+
+    <style>
+      /* =======================================
+           1. Global Styles & Typography
+           ======================================= */
+      :root {
+        /* Define a refined, high-contrast dark-mode palette */
+        --color-deep-purple: #0f0028; /* Deepest Background */
+        --color-dark-accent: #2d0063; /* Header/Card Background */
+        --color-primary-glow: #8b5cf6; /* Bright Purple for Highlights/Buttons */
+        --color-secondary-glow: #a78bfa; /* Lighter Purple for Text/Hover */
+        --color-text-light: #e0e7ff; /* General Text */
+        --color-text-muted: #b4bfd9; /* Sub-text */
+      }
+
+      body {
+        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--color-deep-purple);
+        background-image: radial-gradient(
+          at top left,
+          rgba(45, 0, 99, 0.4) 0%,
+          rgba(15, 0, 40, 0.8) 70%,
+          var(--color-deep-purple) 100%
+        );
+        background-attachment: fixed;
+        color: var(--color-text-light);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* =======================================
+           2. Header & Navigation
+           ======================================= */
+      .main-header {
+        background-color: rgba(45, 0, 99, 0.8);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(8px);
+      }
+
+      .main-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 36px;
+        font-weight: 900;
+        color: white;
+        text-decoration: none;
+        text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 35px;
+        margin-left: auto;
+      }
+
+      .nav-links a {
+        color: var(--color-text-muted);
+        text-decoration: none;
+        font-size: 15px;
+        padding: 5px 0;
+        transition: color 0.3s, border-color 0.3s;
+        font-weight: 500;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--color-secondary-glow);
+        border-bottom: 2px solid var(--color-primary-glow);
+      }
+
+      /* =======================================
+           3. Introduction Section
+           ======================================= */
+      .intro {
+        padding: 100px 20px 40px;
+        text-align: center;
+      }
+
+      .intro h1 {
+        font-size: 4.5em;
+        color: var(--color-text-light);
+        margin-bottom: 10px;
+        text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .intro p {
+        font-size: 1.5em;
+        color: var(--color-text-muted);
+        max-width: 900px;
+        margin: 0 auto;
+        font-weight: 300;
+      }
+
+      /* =======================================
+           4. Action Boxes (Tutor & Valedictorian)
+           ======================================= */
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 30px;
+        padding: 40px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .sub {
+        background-color: var(--color-dark-accent);
+        border: 1px solid rgba(139, 92, 246, 0.2);
+        border-radius: 16px;
+        padding: 40px 30px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+          0 0 20px rgba(139, 92, 246, 0.1);
+        text-align: center;
+        flex: 1;
+        transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.4s;
+      }
+
+      .sub:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6),
+          0 0 30px var(--color-primary-glow);
+      }
+
+      .sub h4 {
+        color: var(--color-text-light);
+        font-size: 2.2em;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .sub button {
+        background-color: var(--color-primary-glow);
+        color: var(--color-deep-purple);
+        border: none;
+        padding: 15px 35px;
+        font-size: 1.1em;
+        font-weight: 700;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        transition: background-color 0.3s ease, transform 0.1s ease,
+          box-shadow 0.3s;
+        text-transform: uppercase;
+      }
+
+      .sub button:hover {
+        background-color: var(--color-secondary-glow);
+        box-shadow: 0 6px 20px rgba(167, 139, 250, 0.6);
+        transform: translateY(-2px);
+      }
+
+      /* =======================================
+           5. FAQ Section (Simplified for visibility)
+           ======================================= */
+      .faq-section {
+        padding: 80px 20px;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-section h2 {
+        font-size: 2.5em;
+        color: var(--color-primary-glow);
+        margin-bottom: 50px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+        display: inline-block;
+      }
+
+      .faq-item {
+        margin-bottom: 15px;
+        background-color: var(--color-dark-accent);
+        border-radius: 10px;
+        border: 1px solid rgba(139, 92, 246, 0.1);
+        text-align: left;
+      }
+
+      .faq-question {
+        padding: 18px 25px;
+        font-size: 1.1em;
+        font-weight: 600;
+        color: var(--color-text-light);
+        /* Removed cursor: pointer since it's no longer collapsible */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(139, 92, 246, 0.1); /* Separator line */
+      }
+
+      /* Icon is removed since the section is always open */
+      .faq-icon {
+        display: none;
+      }
+
+      .faq-answer {
+        /* FIX: Removed max-height, padding transitions, and overflow to ensure content is always visible */
+        padding: 15px 25px 25px;
+        color: var(--color-text-muted);
+        font-size: 1em;
+      }
+
+      .faq-answer p {
+        margin: 0;
+      }
+
+      /* =======================================
+           6. Vision Section 
+           ======================================= */
+      .vision-section {
+        padding: 60px 20px;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .vision-section h2 {
+        font-size: 2.5em;
+        color: var(--color-primary-glow);
+        margin-bottom: 40px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+        display: inline-block;
+      }
+
+      .vision-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .vision-item {
+        background-color: var(--color-dark-accent);
+        padding: 30px;
+        border-radius: 12px;
+        text-align: left;
+        border-left: 5px solid var(--color-primary-glow);
+        transition: background-color 0.3s ease;
+      }
+
+      .vision-item:hover {
+        background-color: rgba(45, 0, 99, 0.9);
+      }
+
+      .vision-item h3 {
+        color: var(--color-secondary-glow);
+        font-size: 1.4em;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .vision-item p {
+        color: var(--color-text-muted);
+        font-size: 1em;
+      }
+
+      /* =======================================
+           7. Footer
+           ======================================= */
+      footer {
+        text-align: center;
+        padding: 30px;
+        background-color: rgba(15, 0, 40, 0.8);
+        border-top: 1px solid rgba(139, 92, 246, 0.1);
+        color: rgba(224, 231, 255, 0.5);
+        font-size: 0.9em;
+        margin-top: 50px;
+      }
+
+      /* =======================================
+           8. Media Queries (Responsiveness)
+           ======================================= */
+      @media (max-width: 768px) {
+        .intro h1 {
+          font-size: 3em;
+        }
+        .intro p {
+          font-size: 1.2em;
+        }
+        .main {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .main-nav {
+          flex-direction: column;
+          gap: 15px;
+        }
+        .nav-links {
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body class="home">
+    <header class="main-header">
+      <div class="container">
+        <nav class="main-nav">
+          <a href="index.html" class="logo" title="TechHub home">TeachHub</a>
+
+          <ul class="nav-links">
+            <li><a href="index.html" class="active">HOME</a></li>
+            <li><a href="jaboutus.html">ABOUT US</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <h1>The Future of Learning, Powered by AI</h1>
+        <p>
+          Your intelligent platform to effortlessly study, teach, and grow
+          smarter every day with personalized guidance and cutting-edge tools.
+        </p>
+      </section>
+
+      <div class="main">
+        <div class="sub">
+          <h4>TUTOR MODE 🚀</h4>
+          <a href="techpage.html"><button id="st">Start Teaching</button></a>
+        </div>
+        <div class="sub">
+          <h4>VALEDICTORIAN MODE 🧠</h4>
+          <a href="stu_edupage.html">
+            <button id="sl">Start Learning</button></a
+          >
+        </div>
+      </div>
+
+      <section class="faq-section">
+        <h2>FAQ'S</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              How does the AI personalize learning?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                TeachHub's AI analyzes your progress, identifies knowledge gaps,
+                and dynamically adjusts the curriculum, content, and practice
+                exercises to perfectly match your individual needs and learning
+                speed.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What features are available for Tutors?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Tutor Mode offers AI tools for automated grading, scheduling
+                assistance, content generation, and deep insights into student
+                performance, freeing up time for direct student engagement and
+                mentorship.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Is TeachHub free to use? <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                We offer a generous free tier for basic learning and teaching
+                tools. Premium features, including advanced analytics and
+                specialized AI tutoring modules, are available through
+                subscription plans.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What subjects does TeachHub cover? <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                TeachHub supports a wide range of subjects, from core STEM
+                fields (Math, Science, Coding) to Humanities and Languages, with
+                new AI content being added monthly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vision-section">
+        <div class="container">
+          <h2>Our Vision for Education</h2>
+          <div class="vision-grid">
+            <div class="vision-item">
+              <h3>Personalized Paths</h3>
+              <p>
+                To provide an adaptive learning experience where every student
+                receives a unique, AI-curated curriculum tailored to their pace
+                and style.
+              </p>
+            </div>
+            <div class="vision-item">
+              <h3>Empowered Tutors</h3>
+              <p>
+                To equip educators with powerful AI assistants that handle
+                administrative tasks, allowing them to focus entirely on
+                meaningful interaction and mentorship.
+              </p>
+            </div>
+            <div class="vision-item">
+              <h3>Global Accessibility</h3>
+              <p>
+                To break down geographic barriers, making high-quality,
+                AI-driven education accessible to any learner, anywhere in the
+                world, on any device.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 TeachHub | Empowering Students and Teachers</p>
+      </div>
+    </footer>
+  </body>
+</html>

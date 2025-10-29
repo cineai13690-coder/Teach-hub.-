@@ -1,0 +1,403 @@
+/* --- Global Styles & Body Cleanup --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* --- NEW DARK, GRADIENT BACKGROUND (Matching the provided image) --- */
+    /* Use a very dark purple from your palette as the base (16, 0, 43) */
+    background-color: rgba(16, 0, 43,0.7); 
+    /* Create a subtle radial gradient for depth, making it darker towards corners */
+    background-image: radial-gradient(
+        at top left, 
+        rgba(36, 0, 70, 0.4) 0%, /* Dark Primary with transparency */
+        rgba(16, 0, 43, 0.8) 70%, /* Deepest Purple with transparency */
+        rgb(16, 0, 43) 100% /* Deepest Purple solid at edges */
+    );
+    background-attachment: fixed; /* Ensures the gradient stays in place on scroll */
+    /* --- END NEW DARK BACKGROUND --- */
+
+    /* Set default text color to a light shade for contrast on dark background */
+    color: rgb(224, 170, 255); /* Very Light Accent for general text */
+    margin: 0; 
+    line-height: 1.6; 
+}
+
+/* --- Main Header & Navigation --- */
+.main-header {
+    /* Use a slightly lighter dark purple for the header, with transparency for depth */
+    background-color: rgba(36, 0, 70, 0.6); /* Dark Primary with some transparency */
+    /* Stronger shadow for separation */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    padding: 15px 0;
+    position: sticky; /* Make header stick to top */
+    top: 0;
+    z-index: 1000; /* Ensure header is above other content */
+    backdrop-filter: blur(5px); /* Add a subtle blur effect for modern feel */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main-nav {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+/* --- Logo Styling --- */
+.logo {
+    font-size: 32px;
+    font-weight: 800;
+    /* Use a light accent color for the logo against the dark background */
+    color: rgb(255,255,255); /* Lightest Accent */
+    text-decoration: none;
+    /* Add a subtle text shadow for a glowing effect, if desired */
+    text-shadow: 0 0 8px rgba(199, 125, 255, 0.4);
+}
+
+/* --- Navigation Links Styling --- */
+.nav-links {
+    list-style: none; 
+    display: flex; 
+    gap: 30px; 
+    margin-left: auto; 
+}
+
+.nav-links a {
+    /* Use a lighter purple for nav links (157, 78, 221) */
+    color: rgb(157, 78, 221); 
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 0; 
+    transition: color 0.3s, border-color 0.3s;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    /* Main Link/Hover color (90, 24, 154) but brighter for hover */
+    color: rgb(224, 170, 255); /* Very Light Accent for strong hover */
+}
+
+/* Active/Current Link Styling */
+.nav-links a.active {
+    /* Use a bright color for active link text */
+    color: rgb(224, 170, 255); 
+    /* Use the Primary Accent for the underline (60, 9, 108) */
+}
+
+/* --- Introduction Section (Centered) --- */
+.intro {
+    padding: 100px 20px 80px; /* More vertical space for a grander intro */
+    text-align: center; 
+}
+
+.intro h1 {
+    font-size: 3.5em; /* Larger heading */
+    /* Use Lightest Accent for main heading (199, 125, 255) */
+    color: rgb(255,255, 255); 
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(199, 125, 255, 0.3); /* Soft glow */
+}
+
+.intro p {
+    font-size: 1.35em; /* Larger paragraph */
+    /* Use Lighter Accent for intro paragraph (157, 78, 221) */
+    color: rgb(255,255,255);
+    max-width: 800px; /* Wider paragraph */
+    margin: 0 auto; 
+}
+
+/* --- Main Content & Box Layout --- */
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 50px 20px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+/* --- Styles for the Individual Boxes (Tutor & Valedictorian) --- */
+.sub {
+    /* Keep boxes white for strong contrast against dark background */
+    background-color: #ffffff; 
+    /* Border using a muted purple */
+    border: 1px solid rgba(123, 44, 191, 0.3); 
+    border-radius: 12px;
+    padding: 30px;
+    /* Stronger, more vibrant purple shadow */
+    box-shadow: 0 8px 30px rgba(123, 44, 191, 0.2); 
+    
+    flex: 1;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* Optional: Style the headings for the boxes */
+.sub h4 {
+    /* Dark Primary color for the box headings (36, 0, 70) */
+    color: rgb(36, 0, 70); 
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+}
+
+/* --- Button Styling --- */
+#st, #sl {
+    /* Button/Active color (123, 44, 191) */
+    background-color: rgb(123, 44, 191); 
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block; 
+}
+
+#st:hover, #sl:hover {
+    /* Primary Accent color on hover (60, 9, 108) */
+    background-color: rgb(60, 9, 108); 
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+/* --- Responsive Design for smaller screens --- */
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+    .sub, .sub2 {
+        max-width: 90%;
+    }
+
+    .intro h1 {
+        font-size: 2.5em; /* Adjust heading size for mobile */
+    }
+    .intro p {
+        font-size: 1.1em;
+    }
+}
+
+/* --- Footer Styling --- */
+footer {
+    /* Use a dark shade from your palette for the footer (36, 0, 70) */
+    background-color: rgb(36, 0, 70); 
+    /* Use a light accent color for the footer text */
+    color: rgb(199, 125, 255); 
+    text-align: center;
+    padding: 20px 0;
+    /* Subtle border with a Light Accent color (157, 78, 221) */
+    border-top: 1px solid rgba(157, 78, 221, 0.4); 
+    font-size: 0.9em;
+}
+
+.img{
+    border-radius: 50px;
+  
+  display:inline-block ; 
+  
+  width: 32%; 
+  height: auto;
+
+  margin: 0.50%; 
+  
+ 
+  vertical-align:top; 
+
+}
+
+
+
+/* Page entry animation */
+body {
+  opacity: 0;
+  transform: scale(0.95);
+  filter: blur(8px);
+  animation: revealPage 1.2s ease-out forwards;
+}
+
+@keyframes revealPage {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+/* ==== TeachHub Subjects Page Styles ==== */
+.stu_edupage {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top left, #2e005d, #18002b);
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically */
+}
+
+/* ==== SUBJECT BUTTON CONTAINER ==== */
+.sub-options {
+  display: flex;
+  flex-wrap: wrap;           /* wrap buttons if screen is smaller */
+  justify-content: center;
+  align-items: center;
+  gap: 40px;                 /* space between buttons */
+  text-align: center;
+  width: 100%;
+  max-width: 700px;          /* keeps them nicely aligned on large screens */
+}
+
+/* ==== SQUARE BUTTONS ==== */
+.sub-options button {
+  width: 150px;
+  height: 150px;
+  background: white;
+  color: #5b0099;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0px 10px 25px rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ==== HOVER EFFECT ==== */
+.sub-options button:hover {
+  background: linear-gradient(135deg, #a445ed, #6a11cb);
+  color: white;
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0px 18px 35px rgba(164, 69, 237, 0.6);
+}
+
+/* ==== REMOVE LINK UNDERLINES ==== */
+.sub-options a {
+  text-decoration: none;
+}
+
+/* ==== RESPONSIVE DESIGN ==== */
+@media (max-width: 768px) {
+  .sub-options {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+
+  .sub-options button {
+    width: 120px;
+    height: 120px;
+    font-size: 14px;
+  }
+}
+/* Full-page centering setup */
+bod.stu_edupage {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  background: radial-gradient(circle at top left, #3c245a, #1c0f33);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Container for the buttons */
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* Space between buttons */
+}
+
+/* Button styling */
+button {
+  background-color: white;
+  color: purple;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 15px;
+  padding: 20px 50px;
+  box-shadow: 0px 8px 25px rgba(128, 0, 128, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 30px rgba(128, 0, 128, 0.6);
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* 🚀 FINAL ISOLATED CSS: CENTER SUBJECT BUTTONS ONLY (stuhome class) 🚀 */
+/* ---------------------------------------------------------------------- */
+
+/* 1. Target the 'stuhome' body class for full-screen centering 
+   on the subject page (stu_edupage.html). */
+.stuhome {
+    /* Ensures the body covers the full height of the viewport */
+    height: 100vh !important; 
+    /* Centers ALL content within the body (the main element) */
+    display: flex !important;
+    justify-content: center !important; 
+    align-items: center !important; 
+    /* Prevents the main content from stretching */
+    flex-direction: column !important; 
+    margin: 0 !important; 
+    padding: 0 !important;
+}
+
+/* 2. Ensure the main container wraps the buttons correctly */
+.stuhome main {
+    padding: 0 !important;
+    margin: 0 !important;
+    /* Prevents the main content from taking up all vertical space unnecessarily */
+    flex-grow: 0 !important; 
+}
+
+/* 3. Ensure the button container displays all buttons side-by-side */
+.sub-options {
+    display: flex !important;
+    /* Force them to stay on one row */
+    flex-wrap: nowrap !important; 
+    justify-content: center !important; 
+    align-items: center !important;
+    gap: 40px; 
+    /* Allows the buttons to sit side-by-side without wrapping prematurely */
+    max-width: none !important; 
+}
+
+/* 4. Responsive adjustment */
+@media (max-width: 768px) {
+    .sub-options {
+        /* Revert to wrapping on small screens */
+        flex-wrap: wrap !important; 
+    }
+}
+/* --- FIX: Center text inside subject buttons --- */
+.sub-options button {
+    text-align: center !important;
+    /* Also ensure display is block or flex for better centering control, if needed, 
+       but text-align should be enough for this fix */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* Optional: Ensure the text fills the button space */
+    line-height: normal !important;
+    padding: 0 !important;
+}
